@@ -1,132 +1,14 @@
-<!DOCTYPE html>
-<html ng-app="app">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>OpenAQ Browser</title>
-  <link rel="shortcut icon" href="assets/favicon.ico">
-  <!-- build:css css/style.min.css -->
-  <link rel="stylesheet" href="/bower_components/angucomplete-alt/angucomplete-alt.css" type="text/css" />
-  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="/bower_components/c3/c3.min.css" type="text/css" />
-  <link rel="stylesheet" href="/bower_components/leaflet/dist/leaflet.css" type="text/css" />
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-  <!-- /build -->
+  <base href="/">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-
-<nav class="navbar navbar-default">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#/">OpenAQ Browser</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" ng-controller="NavController">
-        <li ng-class="{ active: urlLocation.path() == '/cities' }" ng-click="isActive('/cities')"><a href="#/cities">Cities</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/countries' }" ng-click="isActive('/countries')"><a href="#/countries">Countries</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/fetches' }" ng-click="isActive('/fetches')"><a href="#/fetches">Fetches</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/latest' }" ng-click="isActive('/latest')"><a href="#/latest">Latest</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/locations' }" ng-click="isActive('/locations')"><a href="#/locations">Locations</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/measurements' }"><a href="#/measurements">Measurements</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/parameters' }"><a href="#/parameters">Parameters</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/sources' }"><a href="#/sources">Sources</a></li>
-        <li ng-class="{ active: urlLocation.path() == '/graph' }"><a href="#/graph">Graph</a></li>
-      </ul>
-      <div class="nav navbar-nav navbar-right hidden-sm">
-        <li><a href="https://docs.openaq.org/" title="Go to OpenAQ API docs">Docs</a></li>
-      </div>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
 <body>
-  <!--
-  <div class="container">
-    <div class="alert alert-danger" ng-show="message">{{ message }}</div>
-  </div>
-  -->
-  <main>
-    <div id="content" class="container" ng-view>
-  </main>
-  </div>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 text-muted">
-          An opensource web client for <a href="https://openaq.org">OpenAQ API</a> developed on <a href="https://github.com/dolugen/openaq-browser">Github</a>. MIT license.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- build:js bower.min.js -->
-  <script src='/bower_components/jquery/dist/jquery.min.js'></script>
-  <script src='/bower_components/angular/angular.min.js'></script>
-  <script src='/bower_components/angular-route/angular-route.min.js'></script>
-  <script src='/bower_components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
-  <script src='/bower_components/angucomplete-alt/dist/angucomplete-alt.min.js'></script>
-  <script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
-  <script src='/bower_components/c3/c3.min.js'></script>
-  <script src='/bower_components/d3/d3.min.js'></script>
-  <script src='/bower_components/leaflet/dist/leaflet.js'></script>
-  <script src='/bower_components/lodash/lodash.min.js'></script>
-  <script src='/bower_components/moment/min/moment.min.js'></script>
-  <script src='/bower_components/ui-leaflet/dist/ui-leaflet.min.js'></script>
-  <script src='/bower_components/urijs/src/URI.min.js'>  </script>
-  <!-- /build -->
-
-  <!-- build:js app.js -->
-  <script src="/app/app.module.js"></script>
-
-  <script src="/app/core/core.module.js"></script>
-  <script src="/app/core/config.js"></script>
-  <script src="/app/core/constants.js"></script>
-  <script src="/app/core/exception.js"></script>
-  <script src="/app/core/core.directives.js"></script>
-  <script src="/app/core/url.service.js"></script>
-  <script src="/app/core/data.service.js"></script>
-  <script src="/app/core/date.factory.js"></script>
-  <script src="/app/core/storage.service.js"></script>
-  <script src="/app/core/nav.js"></script>
-  <script src="/app/core/404.route.js"></script>
-  <script src="/app/core/about.route.js"></script>
-  <script src="/app/core/about.js"></script>
-
-  <script src="/app/endpoints/endpoints.module.js"></script>
-  <script src="/app/endpoints/endpoints.route.js"></script>
-  <script src="/app/endpoints/cities.js"></script>
-  <script src="/app/endpoints/cities-table.directive.js"></script>
-  <script src="/app/endpoints/cities-form.directive.js"></script>
-  <script src="/app/endpoints/countries.js"></script>
-  <script src="/app/endpoints/countries.directive.js"></script>
-  <script src="/app/endpoints/fetches.js"></script>
-  <script src="/app/endpoints/fetches-form.directive.js"></script>
-  <script src="/app/endpoints/fetches-table.directive.js"></script>
-  <script src="/app/endpoints/geo-filters.directive.js"></script>
-  <script src="/app/endpoints/latest.js"></script>
-  <script src="/app/endpoints/latest-table.directive.js"></script>
-  <script src="/app/endpoints/latest-form.directive.js"></script>
-  <script src="/app/endpoints/locations.js"></script>
-  <script src="/app/endpoints/locations-table.directive.js"></script>
-  <script src="/app/endpoints/locations-form.directive.js"></script>
-  <script src="/app/endpoints/measurements.js"></script>
-  <script src="/app/endpoints/measurements-form.directive.js"></script>
-  <script src="/app/endpoints/measurements-table.directive.js"></script>
-  <script src="/app/endpoints/panel-main.directive.js"></script>
-  <script src="/app/endpoints/parameters.js"></script>
-  <script src="/app/endpoints/sources.js"></script>
-
-  <script src="/app/graph/graph.module.js"></script>
-  <script src="/app/graph/graph.route.js"></script>
-  <script src="/app/graph/graph.js"></script>
-  <!-- /build -->
+  <app-root></app-root>
 </body>
 </html>

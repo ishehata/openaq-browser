@@ -1,0 +1,14 @@
+<p class="lead">
+  Showing: {{ rows.length }} of {{ total }}
+</p>
+
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <th *ngFor="let column of columns" scope="col">{{ column | uppercase }}</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows" scope="row">
+      <td *ngFor="let column of columns">{{ row[column] }}</td>
+    </tr>
+  </tbody>
+</table>

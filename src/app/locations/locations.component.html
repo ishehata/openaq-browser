@@ -1,0 +1,31 @@
+<br />
+
+<div class="row">
+  <div class="col">
+    <h1 class="display-6">Locations</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <input type="text" class="form-control" value="https://api.openaq.org/v1/locations" readonly="readonly">
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col col-lg-4">
+    <app-place-section [countryEnabled]="true" [cityEnabled]="true" [locationEnabled]="true" [parameterEnabled]="true"
+       (changed)="placeChanged($event)"></app-place-section>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ng-template [ngIf]="!loading">
+      <app-data-table [rows]="locations" [columns]="dataTableColumns()" [total]="found"></app-data-table>
+    </ng-template>
+  </div>
+</div>

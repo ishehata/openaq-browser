@@ -1,0 +1,38 @@
+<div class="card mb-4">
+  <div class="card-header text-white bg-primary">
+    Place
+  </div>
+  <div class="card-body" [formGroup]="_form" *ngIf="_form">
+    <div class="form-group row" *ngIf="countryEnabled">
+      <label class="col-sm-4 col-form-label">Country</label>
+      <select class="col-sm-8 form-control" formControlName="country">
+        <option></option>
+        <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group row" *ngIf="cityEnabled">
+      <label class="col-sm-4 col-form-label">City</label>
+      <select class="col-sm-8 form-control" formControlName="city">
+        <option></option>
+        <option *ngFor="let city of cities" [value]="city.city">{{ city.city }}</option>
+      </select>
+    </div>
+
+    <div class="form-group row" *ngIf="locationEnabled">
+      <label class="col-sm-4 col-form-label">Location</label>
+      <select class="col-sm-8 form-control" formControlName="location">
+        <option></option>
+        <option *ngFor="let location of locations" [value]="location.location">{{ location.location }}</option>
+      </select>
+    </div>
+
+    <div class="form-group row" *ngIf="locationEnabled">
+        <label class="col-sm-4 col-form-label">Parameter</label>
+        <select class="col-sm-8 form-control" formControlName="parameter">
+          <option></option>
+          <option *ngFor="let parameter of paramters" [value]="parameter.value">{{ parameter.label }}</option>
+        </select>
+      </div>
+  </div>
+</div>
