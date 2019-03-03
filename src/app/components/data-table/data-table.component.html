@@ -1,4 +1,4 @@
-<p class="lead">
+<p class="text-muted" *ngIf="total">
   Showing: {{ rows.length }} of {{ total }}
 </p>
 
@@ -8,7 +8,16 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of rows" scope="row">
-      <td *ngFor="let column of columns">{{ row[column] }}</td>
+      <td *ngFor="let column of columns">
+        <ng-container [ngSwitch]="column">
+          <span  *ngSwitchCase="'coordinates'">{{ row.coordinates?.latitude + ',' + row.coordinates?.longitude }}</span>
+          <span  *ngSwitchCase="'date.local'">{{ row['date']['local'] }}</span>
+          <span  *ngSwitchCase="'url'"><a target="_blank" [href]="row[column]">URL</a></span>
+          <span  *ngSwitchCase="'sourceURL'"><a target="_blank" [href]="row[column]">sourceURL</a></span>
+          <span *ngSwitchDefault>{{ row[column] }}</span>
+        </ng-container>
+
+      </td>
     </tr>
   </tbody>
 </table>

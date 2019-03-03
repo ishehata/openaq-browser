@@ -1,0 +1,36 @@
+<br />
+
+<div class="row">
+  <div class="col">
+    <h1 class="display-6">Measurements</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <input type="text" class="form-control" value="https://api.openaq.org/v1/measurements" readonly="readonly">
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col col-lg-4">
+    <app-place-section [countryEnabled]="true" (changed)="placeChanged($event)"></app-place-section>
+  </div>
+  <div class="col col-lg-4">
+    <app-sorting (changed)="sortingChanged($event)"></app-sorting>
+  </div>
+  <div class="col col-lg-4">
+    <app-filters (changed)="filtersChanged($event)"></app-filters>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ng-template [ngIf]="!loading">
+      <app-data-table [rows]="measurements" [columns]="dataTableColumns()" [total]="found"></app-data-table>
+    </ng-template>
+  </div>
+</div>

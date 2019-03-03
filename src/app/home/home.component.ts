@@ -22,10 +22,10 @@ export class HomeComponent implements OnInit {
     this.api.listCountries(0).subscribe(res => {
       this.countriesCount = res.meta.found;
     });
-    this.api.listLocations(0).subscribe(res => {
+    this.api.listLocations({}, 0).subscribe(res => {
       this.locationsCount = res.meta.found;
     });
-    this.api.listMeasurements(0).subscribe(res => {
+    this.api.listMeasurements({}, 0).subscribe(res => {
       this.measurementsCount = res.meta.found;
     });
   }

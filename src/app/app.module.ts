@@ -12,6 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { CitiesComponent } from './cities/cities.component';
 import { LatestComponent } from './latest/latest.component';
 import { LocationsComponent } from './locations/locations.component';
+import { MeasurementsComponent } from './measurements/measurements.component';
+import { SortingComponent } from './components/sections/sorting/sorting.component';
+import { FiltersComponent } from './components/sections/filters/filters.component';
+import { ParametersComponent } from './parameters/parameters.component';
+import { SourcesComponent } from './sources/sources.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { LocationsComponent } from './locations/locations.component';
     HomeComponent,
     CitiesComponent,
     LatestComponent,
-    LocationsComponent
+    LocationsComponent,
+    MeasurementsComponent,
+    SortingComponent,
+    FiltersComponent,
+    ParametersComponent,
+    SourcesComponent
   ],
   imports: [
     BrowserModule,
